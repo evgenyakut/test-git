@@ -19,16 +19,20 @@ def game_core(number):
     predict_max = 100
     predict = np.random.randint(1,101)
     while number != predict:
+        # В цикле происходит бинарный поиск загаданного числа "number"
         count += 1
         if number > predict:
+            # Определяем нижнюю планку поиска.
             predict_min = predict
             predict += (predict_max - predict_min + 1)//2
+            
         elif number < predict:
+            # Определяем верхнюю планку поиска.
             predict_max = predict
             predict -= (predict_max - predict_min + 1)//2
     return(count) # выход из цикла, если угадали
 
-score_game(game_core)
+score_game(game_core) # Выводим среднее количество шагов за которое алгоритм находит загаданное число
 
 
 
